@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    background-color: #0D0F1A;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0D0F1A;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #252840;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6C63FF;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-[#161827] border border-[#252840] rounded-xl;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(108, 99, 255, 0.12);
+  }
+  .btn-primary {
+    @apply bg-primary text-white font-semibold px-5 py-2.5 rounded-lg transition-all duration-200 hover:bg-opacity-90 active:scale-95;
+  }
+  .btn-secondary {
+    @apply border border-[#252840] text-[#A8AABD] font-semibold px-5 py-2.5 rounded-lg transition-all duration-200 hover:border-primary hover:text-white active:scale-95;
+  }
+  .input-field {
+    @apply bg-[#0D0F1A] border border-[#252840] rounded-lg px-4 py-3 text-white placeholder-[#5C5F78] focus:outline-none focus:border-primary transition-colors w-full;
+  }
+  .shimmer {
+    background: linear-gradient(90deg, #161827 25%, #1e2035 50%, #161827 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+  .glass-card {
+    background: rgba(22, 24, 39, 0.8);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(37, 40, 64, 0.6);
+    border-radius: 16px;
+  }
+  .sidebar-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-[#A8AABD] transition-all duration-200 cursor-pointer hover:bg-[#252840] hover:text-white;
+  }
+  .sidebar-item.active {
+    @apply bg-primary bg-opacity-20 text-primary;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold;
+  }
+  .table-row {
+    @apply border-b border-[#252840] hover:bg-[#1a1d2e] transition-colors;
+  }
+}
+
+/* Ripple effect */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+.ripple::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(0);
+  animation: ripple-anim 0.6s ease-out;
+}
+@keyframes ripple-anim {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Number count animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating animation for auth panel */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+.float-anim { animation: float 4s ease-in-out infinite; }
+.float-anim-2 { animation: float 5s ease-in-out infinite 1s; }
+.float-anim-3 { animation: float 6s ease-in-out infinite 2s; }
+
+/* Grid pattern */
+.bg-grid {
+  background-image: linear-gradient(rgba(108, 99, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108, 99, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glow effect */
+.glow-violet {
+  box-shadow: 0 0 30px rgba(108, 99, 255, 0.3);
+}
+.glow-green {
+  box-shadow: 0 0 30px rgba(0, 212, 170, 0.3);
+}
+
+/* Donut ring */
+.donut-ring {
+  transform: rotate(-90deg);
+}
+
+/* Bottom nav mobile */
+.bottom-nav {
+  @apply fixed bottom-0 left-0 right-0 bg-[#161827] border-t border-[#252840] z-50 flex items-center justify-around px-2 py-2;
+}
